@@ -5,11 +5,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
-import unl.cse.Team;
 
 public class GameReport {
 	/**
@@ -22,11 +21,31 @@ public class GameReport {
 	public static void main(String args[]) {
 
 		File f = new File(args[0]);
-		Game games[] = new Game[];
+		List<Game> games = new ArrayList<Game>();
+		Map<String, HashSet<String>> pubGame = new HashMap<>();
+		Map<String, HashSet<String>> gamePlat = new HashMap<>();
 
 		try {
 			Scanner s = new Scanner(f);
 			while (s.hasNextLine()) {
+				String lineTok[] = s.nextLine().split(",", -2);
+				Game game1 = new Game(lineTok[0], lineTok[1], lineTok[2], lineTok[3]);
+				games.add(game1);
+				if (pubGame.containsKey(lineTok[1])) {
+					pubGame.get(lineTok[1]).add(lineTok[0]);
+				} else if (lineTok[1].compareTo("") != 0) {
+					HashSet<String> temp = new HashSet<>();
+					temp.add(lineTok[0]);
+					pubGame.put(game1.getPublisher(), temp);
+				}
+
+				if (gamePlat.containsKey(lineTok[0])) {
+					gamePlat.get(lineTok[0]).add(lineTok[3]);
+				} else if (lineTok[0].compareTo("") != 0) {
+					HashSet<String> temp = new HashSet<>();
+					temp.add(lineTok[3]);
+					gamePlat.put(game1.getGame(), temp);
+				}
 
 			}
 
@@ -35,7 +54,7 @@ public class GameReport {
 			throw new RuntimeException(e);
 		}
 
-		Arrays.sort(games, new Comparator<Game>() {
+		Collections.sort(games, new Comparator<Game>() {
 			@Override
 			public int compare(Game a, Game b) {
 				return b.getPublisher().compareTo(a.getPublisher());
@@ -44,12 +63,14 @@ public class GameReport {
 		});
 
 		System.out.println("Publisher Game Counts\n ===============");
-
+		
+		System.out.printLn("%15s %d", );
 		for (Game g : games) {
-
+			
+			
 		}
 
-		Arrays.sort(games, new Comparator<Game>() {
+		Collections.sort(games, new Comparator<Game>() {
 			@Override
 			public int compare(Game a, Game b) {
 				return b.getGame().compareTo(a.getGame());

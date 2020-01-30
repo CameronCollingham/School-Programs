@@ -1,10 +1,10 @@
 
 public class Game {
 
-	public final String game;
-	public final String publisher;
-	public final String year;
-	public final String platform;
+	public String game;
+	public String publisher;
+	public String year;
+	public String platform;
 	
 	public Game(String game, String publisher, String year, String platform) {
 		this.game = game;
@@ -13,6 +13,22 @@ public class Game {
 		this.platform = platform;
 	}
 	
+	public void setGame(String game) {
+		this.game = game;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
+
 	public String getGame() {
 		return this.game;
 	}

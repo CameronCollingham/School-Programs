@@ -1,0 +1,7 @@
+Lego Star Wars,LucasArts,2005,Xbox
+Lego Star Wars,LucasArts,2005,PlayStation 2
+Lego Star Wars,LucasArts,2005,PC
+Lego Star Wars,LucasArts,2005,Mac
+Tie Fighter,LucasArts,1994,PC
+X-Wing vs Tie Fighter,LucasArts,1997,PC
+,Sony Computer Entertainment,,
