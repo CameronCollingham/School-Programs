@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -57,30 +56,53 @@ public class GameReport {
 		Collections.sort(games, new Comparator<Game>() {
 			@Override
 			public int compare(Game a, Game b) {
-				return b.getPublisher().compareTo(a.getPublisher());
+				return a.getPublisher().compareTo(b.getPublisher());
 			}
 
 		});
 
 		System.out.println("Publisher Game Counts\n ===============");
-		
-		System.out.printLn("%15s %d", );
+		String last = (" ");
+		int i = 0;
 		for (Game g : games) {
+
+			if (last.compareTo(g.getPublisher()) != 0) {
+				i++;
+				System.out.printf("%-15s %d\n", last, i);
+				i = 0;
+				last = g.getPublisher();
+			} else if (last.compareTo(g.getPublisher()) == 0) {
+				if (g.getGame().compareTo("") != 0) {
+					i++;
+				}
+
+			}
 			
-			
+
 		}
 
 		Collections.sort(games, new Comparator<Game>() {
 			@Override
 			public int compare(Game a, Game b) {
-				return b.getGame().compareTo(a.getGame());
+				return a.getGame().compareTo(b.getGame());
 			}
 
 		});
-
+		String blast = (" ");
+		i = 0;
 		System.out.println("Game Platform Counts\n ===============");
 		for (Game g : games) {
+			if (blast.compareTo(g.getGame()) != 0) {
+				i++;
+				System.out.printf("%-15s %d\n", blast, i);
+				i = 0;
+				blast = g.getGame();
+			} else if (blast.compareTo(g.getGame()) == 0) {
+				if (g.getPlatform().compareTo("") != 0 || g.getPlatform().compareTo("\\s") != 0) {
+					i++;
+				}
 
+			}
 		}
 
 	}
