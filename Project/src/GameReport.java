@@ -62,20 +62,9 @@ public class GameReport {
 		});
 
 		System.out.println("Publisher Game Counts\n ===============");
-		String last = (" ");
-		int i = 0;
 		for (Game g : games) {
-
-			if (last.compareTo(g.getPublisher()) != 0) {
-				i++;
-				System.out.printf("%-15s %d\n", last, i);
-				i = 0;
-				last = g.getPublisher();
-			} else if (last.compareTo(g.getPublisher()) == 0) {
-				if (g.getGame().compareTo("") != 0) {
-					i++;
-				}
-
+			for (String) {
+				
 			}
 			
 
@@ -88,21 +77,12 @@ public class GameReport {
 			}
 
 		});
-		String blast = (" ");
-		i = 0;
 		System.out.println("Game Platform Counts\n ===============");
 		for (Game g : games) {
-			if (blast.compareTo(g.getGame()) != 0) {
-				i++;
-				System.out.printf("%-15s %d\n", blast, i);
-				i = 0;
-				blast = g.getGame();
-			} else if (blast.compareTo(g.getGame()) == 0) {
-				if (g.getPlatform().compareTo("") != 0 || g.getPlatform().compareTo("\\s") != 0) {
-					i++;
-				}
-
+			for() {
+				
 			}
+			
 		}
 
 	}
