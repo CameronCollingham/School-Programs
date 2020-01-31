@@ -21,6 +21,8 @@ public class GameReport {
 
 		File f = new File(args[0]);
 		List<Game> games = new ArrayList<Game>();
+		List<String> publishers = new ArrayList<String>();
+		List<String> allGames = new ArrayList<String>();
 		Map<String, HashSet<String>> pubGame = new HashMap<>();
 		Map<String, HashSet<String>> gamePlat = new HashMap<>();
 
@@ -56,33 +58,52 @@ public class GameReport {
 		Collections.sort(games, new Comparator<Game>() {
 			@Override
 			public int compare(Game a, Game b) {
-				return a.getPublisher().compareTo(b.getPublisher());
+				return b.getPublisher().compareTo(a.getPublisher());
 			}
 
 		});
 
 		System.out.println("Publisher Game Counts\n ===============");
-		for (Game g : games) {
-			for (String) {
-				
-			}
+		
+		for (String p : pubGame.keySet()) {
+			publishers.add(p);
 			
+		}
+		Collections.sort(publishers);
 
+		for(String pub : publishers) {
+			int j = 0;
+			for (String i : pubGame.get(pub)) {
+				if (i.compareTo("") != 0 && i.compareTo("\\s") != 0) {
+					j++;
+				}
+			}
+			System.out.printf("%-30s %d\n", pub, j);
 		}
 
 		Collections.sort(games, new Comparator<Game>() {
 			@Override
 			public int compare(Game a, Game b) {
-				return a.getGame().compareTo(b.getGame());
+				return b.getGame().compareTo(a.getGame());
 			}
 
 		});
+
 		System.out.println("Game Platform Counts\n ===============");
-		for (Game g : games) {
-			for() {
-				
-			}
+		for (String p : gamePlat.keySet()) {
+			allGames.add(p);
 			
+		}
+		Collections.sort(allGames);
+		
+		for (String  g: allGames) {
+			int k = 0;
+			for (String i : gamePlat.get(g)) {
+				if (i.compareTo("") != 0 && i.compareTo("\\s") != 0) {
+					k++;
+				}
+			}
+			System.out.printf("%-30s %d\n", g, k);
 		}
 
 	}
